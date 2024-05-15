@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  box-sizing: border-box;
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #ffffff;
+}
+
+/* hide scroll */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* hide scroll */
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
