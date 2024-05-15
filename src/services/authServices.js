@@ -7,7 +7,6 @@ export class AuthService {
     }
 
     static async register({username, password, confirmPassword}) {
-        console.log(username, password)
         const { data } = await productsApi.post('/auth/register', {username, password, confirmPassword})
         return data
     }

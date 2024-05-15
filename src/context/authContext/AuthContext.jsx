@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const initialState = {
     user: null,
-    error: false,
+    error: null,
     status: 'unauthorized'
 }
 
@@ -33,7 +33,7 @@ export const AuthProvider = ({children}) => {
             dispatch({type: 'LOGIN', payload: user})
             naivgate('/')
         } catch (error) {
-            dispatch({type: 'ERROR', payload: error})
+            dispatch({type: 'ERROR', payload: error?.response?.data?.msg})
         }
     }
 
@@ -44,7 +44,7 @@ export const AuthProvider = ({children}) => {
             dispatch({type: 'REGISTER', payload: user})
             naivgate('/')
         } catch (error) {
-            dispatch({type: 'ERROR', payload: error})
+            dispatch({type: 'ERROR', payload: error?.response?.data?.msg})
         }
     }
 
@@ -54,8 +54,12 @@ export const AuthProvider = ({children}) => {
         dispatch({type: 'LOGOUT'})
     }
 
+    const clearError = () => {
+        dispatch({type: 'CLEAR_ERROR'})
+    }
+
     return (
-        <AuthContext.Provider value={{...state, login, register, logout}}>
+        <AuthContext.Provider value={{...state, login, register, logout, clearError}}>
             {children}
         </AuthContext.Provider>
     )

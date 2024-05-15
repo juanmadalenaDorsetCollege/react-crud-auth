@@ -5,19 +5,24 @@ export const AuthReducer = (state, action) => {
                 ...state,
                 user: action.payload,
                 status: 'authorized',
-                error: false
+                error: null
             }
         case 'REGISTER':
             return {
                 ...state,
                 user: action.payload,
                 status: 'authorized',
-                error: false
+                error: null
             }
         case 'ERROR':
             return {
                 ...state,
                 error: action.payload
+            }
+        case 'CLEAR_ERROR':
+            return {
+                ...state,
+                error: null
             }
         case 'LOGOUT':
             return {
